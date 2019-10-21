@@ -38,26 +38,3 @@ class HeroInfo(models.Model):
 
     def __str__(self):
         return self.hname
-
-from datetime import date
-book = BookInfo(
-    btitle='西游记',
-    bpub_date=date(1988,1,1),
-    bread=10,
-    bcomment=10
-
-)
-book.save()
-hero2 = HeroInfo(
-    hname='猪八戒',
-    hgender=0,
-    hbook_id=book.id
-)
-HeroInfo.objects.create(
-    hname='沙悟净',
-    hgender=0,
-    hbook=book
-)
-BookInfo.objects.get(id=3)
-from django.db.models import F,Q
-BookInfo.objects.filter(bread__gte=F('bcomment'))
