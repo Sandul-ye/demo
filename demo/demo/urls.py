@@ -15,9 +15,16 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-import users.urls
+import users.urls,passport.views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^users/',include(users.urls)),
+    #把路由放在总路由和子路由方式
+    # url(r'^passport/',include('passport.urls')),
+    #把路由全都放在总路由方式
+    # url(r'^passport/index/$',passport.views.index),
+    #把路由全放子路由方式
+    url(r'^',include('passport.urls')),
+    url(r'^',include('booktest.urls'))
 ]
